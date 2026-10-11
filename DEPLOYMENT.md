@@ -88,3 +88,7 @@ docker compose down
 - A sigmoid output is not automatically a calibrated probability.
 - Uploaded files are analyzed in memory for the current session and are not persisted by this application.
 - A production finance system would require robust point-in-time data, authentication/authorization, rate limiting, audit logging, artifact signing/version controls, drift monitoring, backup and disaster-recovery procedures, and rigorous independent model validation.
+
+## Python and NumPy compatibility
+
+Dependency compatibility note: the dashboard requirements select NumPy 2.3.5 on Python 3.14 (needed by pandas 3.0.x) and NumPy 2.1.3 on Python versions below 3.14 (compatible with the TensorFlow 2.19 training setup). Keep Streamlit Cloud on the lightweight root requirements; use Python 3.11 for local training.

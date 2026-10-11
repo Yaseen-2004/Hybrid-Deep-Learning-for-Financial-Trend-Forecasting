@@ -221,3 +221,7 @@ To make local setup easier, the project includes:
 - `run_dashboard.bat` — starts Streamlit.
 
 You can double-click these scripts or run their names from CMD in the project folder. The `.venv`, market data, and trained artifacts are intentionally not included in the ZIP.
+
+## Python/NumPy compatibility
+
+Dependency compatibility note: the dashboard requirements select NumPy 2.3.5 on Python 3.14 (needed by pandas 3.0.x) and NumPy 2.1.3 on Python versions below 3.14 (compatible with the TensorFlow 2.19 training setup). Keep Streamlit Cloud on the lightweight root requirements; use Python 3.11 for local training.

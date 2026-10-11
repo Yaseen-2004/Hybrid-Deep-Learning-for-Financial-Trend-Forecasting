@@ -52,3 +52,5 @@ DEPLOYMENT
 - For Docker, install/start Docker Desktop then double-click deploy_docker.bat.
 - Streamlit Community Cloud uses the lightweight root requirements.txt for analysis-first hosting; local training uses requirements-training.txt. The Docker image installs requirements-models.txt and does not embed large trained model files. The compose service mounts models/results/data read-only from the host.
 - Public deployment needs authentication/access controls; do not expose uploads directly to the public internet without security review.
+
+Dependency compatibility note: the dashboard requirements select NumPy 2.3.5 on Python 3.14 (needed by pandas 3.0.x) and NumPy 2.1.3 on Python versions below 3.14 (compatible with the TensorFlow 2.19 training setup). Keep Streamlit Cloud on the lightweight root requirements; use Python 3.11 for local training.
