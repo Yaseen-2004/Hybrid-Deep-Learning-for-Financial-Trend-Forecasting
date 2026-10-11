@@ -1,0 +1,4 @@
+# Full dashboard runtime with TensorFlow model inference enabled.
+-r requirements.txt
+tensorflow==2.19.1
+matplotlib==3.11.2

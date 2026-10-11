@@ -1,0 +1,3 @@
+# Local development: full model runtime plus automated tests.
+-r requirements-models.txt
+pytest==9.1.1

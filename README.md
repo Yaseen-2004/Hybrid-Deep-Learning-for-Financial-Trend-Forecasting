@@ -41,7 +41,10 @@ Deployment files included in this repository:
 - `.github/workflows/ci.yml` for syntax compilation and unit tests on pushes/pull requests.
 - `DEPLOYMENT.md` for Docker/VPS and Streamlit Community Cloud steps.
 - `SECURITY.md` for handling secrets, uploads and trusted model artifacts.
-- `requirements-dashboard.txt` for an optional lighter analysis-only hosted deployment without TensorFlow; use the full `requirements.txt` for inference from trained `.keras` artifacts and training.
+- `requirements.txt` for Streamlit Community Cloud analysis-first deployment without TensorFlow.
+- `requirements-models.txt` for the full dashboard runtime with TensorFlow inference, suitable for Docker/VPS deployments with approved model artifacts.
+- `requirements-training.txt` for local model training plus tests.
+- `requirements-test.txt` for CI tests without TensorFlow.
 
 The source package does not include your locally trained model artifacts. The upload/analysis workspace can operate without model files; the forecasting workspace needs compatible model run files and result CSVs. See `DEPLOYMENT.md` before publishing, particularly for artifact management and access controls.
 
@@ -59,13 +62,13 @@ Use the project's virtual environment in every terminal:
 py -3.11 -m venv .venv
 .venv\Scripts\activate.bat
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-training.txt
 ```
 
 If `.venv` already exists and is active, you only need:
 
 ```bat
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-training.txt
 ```
 
 Verify the important packages:
@@ -197,7 +200,7 @@ The CI workflow also starts the Streamlit entry point with empty artifact direct
 
 ## Troubleshooting
 
-**`ModuleNotFoundError` for a package:** check that `(.venv)` is visible, then run `python -m pip install -r requirements.txt`.
+**`ModuleNotFoundError` for a package:** check that `(.venv)` is visible, then run `python -m pip install -r requirements-training.txt`.
 
 **No trained run found in dashboard:** train a new run using this version first. Older artifacts from the starter version used flat filenames and predicted price directly; they are not compatible with the new log-return model and must be retrained.
 
@@ -211,7 +214,7 @@ The CI workflow also starts the Streamlit entry point with empty artifact direct
 
 To make local setup easier, the project includes:
 
-- `install_dependencies.bat` — creates `.venv` with Python 3.11 if needed and installs all requirements.
+- `install_dependencies.bat` — creates `.venv` with Python 3.11 if needed and installs `requirements-training.txt`.
 - `run_tests.bat` — activates `.venv` and runs the test suite.
 - `train_quick.bat` — quick AAPL smoke-training run with walk-forward folds disabled.
 - `train_full.bat` — full example run with two walk-forward folds.

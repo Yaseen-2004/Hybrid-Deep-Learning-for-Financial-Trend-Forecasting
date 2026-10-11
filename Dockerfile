@@ -12,9 +12,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && useradd --create-home --uid 10001 --shell /usr/sbin/nologin appuser
 
-COPY requirements.txt ./requirements.txt
+COPY requirements.txt requirements-models.txt ./
 RUN python -m pip install --upgrade pip \
-    && python -m pip install -r requirements.txt \
+    && python -m pip install -r requirements-models.txt \
     && python -m pip check
 
 COPY --chown=10001:10001 . /app

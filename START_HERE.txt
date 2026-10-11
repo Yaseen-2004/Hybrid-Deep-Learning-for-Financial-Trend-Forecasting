@@ -7,7 +7,7 @@ financial-trend-forecasting folder inside the ZIP).
 INSTALL
 1. Create C:\ftf in File Explorer.
 2. Extract ALL ZIP CONTENTS directly into C:\ftf.
-   After extraction, C:\ftf\train.py and C:\ftf\requirements.txt must exist.
+   After extraction, C:\ftf\train.py and C:\ftf\requirements-training.txt must exist.
 3. Open C:\ftf in File Explorer.
 4. Double-click install_dependencies.bat and wait for it to finish.
 5. Double-click run_tests.bat.
@@ -50,5 +50,5 @@ UPLOAD / GRAPH ANALYSIS
 DEPLOYMENT
 - Read DEPLOYMENT.md for Docker and Streamlit Community Cloud deployment.
 - For Docker, install/start Docker Desktop then double-click deploy_docker.bat.
-- The Docker image does not embed large trained model files. The compose service mounts models/results/data read-only from the host.
+- Streamlit Community Cloud uses the lightweight root requirements.txt for analysis-first hosting; local training uses requirements-training.txt. The Docker image installs requirements-models.txt and does not embed large trained model files. The compose service mounts models/results/data read-only from the host.
 - Public deployment needs authentication/access controls; do not expose uploads directly to the public internet without security review.

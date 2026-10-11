@@ -1,4 +1,6 @@
-# Optional lightweight profile for hosted CSV/Excel analysis without trained TensorFlow models.
+# Streamlit Community Cloud / analysis-first profile.
+# TensorFlow is intentionally excluded because this repo does not contain trained model artifacts.
+# For local training use requirements-training.txt; for Docker inference use requirements-models.txt.
 yfinance==1.7.0
 pandas==3.0.6
 numpy==2.1.3

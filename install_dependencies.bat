@@ -22,7 +22,7 @@ if errorlevel 1 (
 )
 python -m pip install --upgrade pip
 if errorlevel 1 goto failed
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-training.txt
 if errorlevel 1 goto failed
 echo.
 echo Setup completed.
