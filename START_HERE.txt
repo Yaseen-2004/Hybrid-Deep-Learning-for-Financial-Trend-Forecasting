@@ -1,0 +1,54 @@
+FINANCIAL TREND FORECASTING - SHORT PATH INSTALL
+
+IMPORTANT: Install to C:\ftf to avoid TensorFlow's deeply nested Windows paths.
+This ZIP intentionally contains the project files at the archive root (no extra
+financial-trend-forecasting folder inside the ZIP).
+
+INSTALL
+1. Create C:\ftf in File Explorer.
+2. Extract ALL ZIP CONTENTS directly into C:\ftf.
+   After extraction, C:\ftf\train.py and C:\ftf\requirements.txt must exist.
+3. Open C:\ftf in File Explorer.
+4. Double-click install_dependencies.bat and wait for it to finish.
+5. Double-click run_tests.bat.
+6. Double-click train_quick.bat.
+7. After training succeeds, double-click run_dashboard.bat.
+8. Open http://localhost:8501 in your browser.
+
+COMMAND PROMPT ALTERNATIVE
+Open CMD and run these commands one at a time:
+  cd /d C:\ftf
+  install_dependencies.bat
+  run_tests.bat
+  train_quick.bat
+  run_dashboard.bat
+
+FULL TRAINING
+After the quick training run succeeds, use train_full.bat for walk-forward
+validation plus final model training. This takes longer.
+
+IF INSTALLATION FAILS
+- Make sure C:\ftf\train.py exists, not C:\ftf\financial-trend-forecasting\train.py.
+- Do not copy an existing .venv; the installer creates a fresh one using Python 3.11.
+- If there is an old .venv in C:\ftf, delete that folder before rerunning the
+  installer. Close any open Python/Streamlit processes first.
+- Save the complete terminal error output to troubleshoot any further issue.
+
+PROJECT NOTES
+- Old saved models are not compatible with the updated log-return target and validation-selected direction thresholds; retrain.
+- Direction thresholds are selected on validation data only. Do not use final test results to choose thresholds or hyperparameters.
+- The project uses yfinance market data for educational/research use. Confirm
+  provider terms/licensing before commercial use.
+- Forecasts are uncertain and are not investment advice or proof of profitability.
+
+
+UPLOAD / GRAPH ANALYSIS
+- In the app sidebar, choose "Upload & analyze data".
+- Upload a CSV or Excel (.xlsx) file (maximum 25 MB).
+- Historical price, prediction export, metrics, and generic numeric files get different analysis charts.
+
+DEPLOYMENT
+- Read DEPLOYMENT.md for Docker and Streamlit Community Cloud deployment.
+- For Docker, install/start Docker Desktop then double-click deploy_docker.bat.
+- The Docker image does not embed large trained model files. The compose service mounts models/results/data read-only from the host.
+- Public deployment needs authentication/access controls; do not expose uploads directly to the public internet without security review.

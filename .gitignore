@@ -1,0 +1,22 @@
+# Python and environments
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store
+
+# Local secrets only; Streamlit configuration is version controlled
+.streamlit/secrets.toml
+.env
+.env.*
+!.env.example
+
+# Generated training artifacts (use Docker volumes / artifact storage for deployment)
+models/**/*.keras
+models/**/*.joblib
+models/**/*.json
+results/**/*.csv
+results/**/*.png
+data/**/*.csv

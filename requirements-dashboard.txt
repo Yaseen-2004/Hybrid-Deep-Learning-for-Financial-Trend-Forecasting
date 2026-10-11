@@ -1,0 +1,10 @@
+# Optional lightweight profile for hosted CSV/Excel analysis without trained TensorFlow models.
+yfinance==1.7.0
+pandas==3.0.6
+numpy==2.1.3
+scikit-learn==1.9.1
+plotly==7.1.0
+streamlit==1.65.0
+joblib==1.6.0
+pandas-market-calendars==5.5.0
+openpyxl==3.1.5

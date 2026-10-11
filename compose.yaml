@@ -1,0 +1,28 @@
+services:
+  financial-trend-forecasting:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: financial-trend-forecasting:latest
+    container_name: financial-trend-forecasting
+    ports:
+      - "8501:8501"
+    environment:
+      FTF_MODELS_DIR: /app/models
+      FTF_RESULTS_DIR: /app/results
+      FTF_DATA_DIR: /app/data
+      PYTHONUNBUFFERED: "1"
+    volumes:
+      - ./models:/app/models:ro
+      - ./results:/app/results:ro
+      - ./data:/app/data:ro
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=4).read()"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 90s

@@ -1,0 +1,1 @@
+"""Financial trend forecasting package."""
